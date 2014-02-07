@@ -2,63 +2,10 @@
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+       <script type="text/javascript" src="Game.js"></script>
       <title>Simple Game</title>
-      <script>
-         // Global Variables
-         var currentLocale = "theLab";
-
-         function updateDisplay() {
-            var msg = "";
-            switch (currentLocale) {
-               case "Kitchen":  msg = "The Lab";
-                               break;
-               case "":  msg = "Inside the TARDIS";
-                               break;
-               case "dungeon": msg = "Pit of Dispair";
-                               break;
-               case "
-               default      : msg = "currentLocal matches no cases";
-            }
-            var taPtr = document.getElementById("taDisplay");
-            var history = taPtr.value;
-            taPtr.value = msg + "\n" + history; 
-         }
-         
-         function go(dir) {
-            var before = currentLocale;
-            switch(dir) {
-               case('north'):
-                  if (currentLocale === "dungeon") {
-                     currentLocale = "theLab";
-                  } else if (currentLocale === "theLab") {
-                     currentLocale = "tardis"
-                  } else {
-                     // TODO: Fix this.
-                     alert("You can't go that way.");
-                  }
-                  break;
-               case('south'):
-                  if (currentLocale === "tardis") {
-                     currentLocale = "theLab";
-                  } else if (currentLocale === "theLab") {
-                     currentLocale = "dungeon"
-                  } else {
-                     // TODO: Fix this.
-                     alert("You can't go that way.");
-                  }
-                  break;
-               case('east'):
-                  break;
-               case('west'):
-                  break;
-               default: alert("Internal Error: unknown direction: " + dir + ".");
-            }
-            if (currentLocale != before) {
-               updateDisplay();
-            }
-         }
-      </script>
    </head>
+    
    <body onload="updateDisplay();">
       <h2>Simple Game</h2>
       <textarea id="taDisplay" style="width:400px; height:200px;">
@@ -76,5 +23,11 @@
       <input type="button"
              value = "West"
              onclick="go('west');">
+      <input type = "button"
+             value = "Up"
+             onclick="go('up');">
+      <input type = "button"
+             value = "Down"
+             onclick="go('down');">
    </body>
 </html>
