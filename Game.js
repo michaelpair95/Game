@@ -1,5 +1,16 @@
 // Global Variables
-var currentLocale = "theLab";
+var currentLocale = "The main Garage";
+
+ // Get the game started.
+      init();
+      updateDisplay();
+
+      // Game Loop
+while (stillPlaying) {
+    getCommand();
+    navigate();
+    updateDisplay();
+}
 
 function init() {
     // Initialize any uninitialized globals.
@@ -17,9 +28,6 @@ function init() {
     locale[6] = "Driveway";
     locale[7] = "Under the Car";
 
-    System.out.println("All game locations:");
-    for (int i = 0; i < locations.length; ++i) {
-        System.out.println(i + ":" + locations[i]);
     }
 
     // Set up the navigation matrix.
@@ -36,3 +44,27 @@ function init() {
         /* nav[7] for loc 7 */  { -1, -1, -1, -1,  0, -1},
     };
 }
+
+navigate() {
+    int dir = -1;  // This will get set to a value > 0 if a direction command was entered.
+
+    if (        command.toLowerCase("north") || command.toLowerCase("n") ) {
+        dir = 0;
+    } else if ( command.toLowerCase("south") || command.toLowerCase("s") ) {
+        dir = 1;
+    } else if ( command.toLowerCase("east")  || command.toLowerCase("e") ) {
+        dir = 2;
+    } else if ( command.toLowerCase("west")  || command.toLowerCase("w") ) {
+        dir = 3;
+    } else if ( command.toLowerCase("up")  || command.toLowerCase("u") ) {
+        dir = 4;
+    } else if ( command.toLowerCase("down")  || command.toLowerCase("d") ) {
+        dir = 5;
+    };
+
+if (dir > -1) {   // This means a dir was set.
+         int newLocation = nav[currentLocale][dir];
+         if (newLocation != -1) {
+            currentLocale = newLocation;
+         } else {
+            System.out.println("You cannot go that way.");
