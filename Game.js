@@ -53,7 +53,9 @@ function go(command) {
             var history = taPtr.value;
             taPtr.value = locale[currentLocale] + "\n" + history;
         } else {
-            alert("You cannot go that way.");
+            var taPtr = document.getElementById("taDisplay");
+            var history = taPtr.value;
+            taPtr.value = "You cannot go that way." + "\n" + history;
         }
     }
 }
