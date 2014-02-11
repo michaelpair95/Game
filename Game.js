@@ -42,8 +42,11 @@ function init() {
 
 function go(command) {
     var dir = -1; // This will get set to a value > 0 if a direction command was entered.
-    var command = document.getElementById("userInput").value;
-
+    
+    //if (document.getElementById("enterButton").onclick == true) {  
+      //  var command = document.getElementById("userInput").value;
+    //}
+    
     if (command.toLowerCase() == "north" || command.toLowerCase() == "n") {
         dir = 0;
     } else if (command.toLowerCase() == "south" || command.toLowerCase() == "s") {
@@ -56,9 +59,9 @@ function go(command) {
         dir = 4;
     } else if (command.toLowerCase() == "down" || command.toLowerCase() == "d") {
         dir = 5;
-    } else {
-        alert("error");
-    }
+    } 
+    
+    
     if (dir > -1) { // This means a dir was set.
         var newLocation = nav[currentLocale][dir];
         if (newLocation != -1) {
