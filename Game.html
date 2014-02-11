@@ -12,7 +12,8 @@
 
     <textarea id="taDisplay" style="width:400px; height:200px;"></textarea>
     <br>
-    <input type="text" id="userInput" size=10 value="">
+    <input type="text" id="userInput" size=10 value="" onkeydown="if (event.keyCode == 13) go()";>
+    <input type="button" id="enterButton" value="Enter" onclick="go()">
     <br>
     <input type="button" id="northButton" value="North" onclick="go('north');">
     <input type="button" id="southButton" value="South" onclick="go('south');">
