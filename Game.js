@@ -3,8 +3,13 @@ var currentLocale = 0;
 var nav;
 var locale;
 
+
+
 function init() {
-    document.getElementById("taDisplay").value = "Main Garage";  
+
+    document.getElementById("taDisplay").value = "Main Garage";
+    document.getElementById("upButton").disabled = true;
+    
     locale = ["Main Garage",
               "Waiting Room",
               "Storage Room",
@@ -26,6 +31,8 @@ function init() {
     [-1, -1, -1,  0, -1, -1],
     [ 0, -1, -1, -1, -1, -1],
     [-1, -1, -1, -1,  0, -1]];
+    
+    
 
 }
 
@@ -52,10 +59,75 @@ function go(command) {
             var taPtr = document.getElementById("taDisplay");
             var history = taPtr.value;
             taPtr.value = locale[currentLocale] + "\n" + history;
+            if (currentLocale == 0) {
+                document.getElementById("northButton").disabled = false;
+                document.getElementById("southButton").disabled = false;
+                document.getElementById("eastButton").disabled = false;
+                document.getElementById("westButton").disabled = false;
+                document.getElementById("upButton").disabled = true;
+                document.getElementById("downButton").disabled = false;
+            }
+            else if (currentLocale == 1) {
+                document.getElementById("northButton").disabled = false;
+                document.getElementById("southButton").disabled = true;
+                document.getElementById("eastButton").disabled = false;
+                document.getElementById("westButton").disabled = true;
+                document.getElementById("upButton").disabled = true;
+                document.getElementById("downButton").disabled = true;
+            }
+            else if (currentLocale == 2) {
+                document.getElementById("northButton").disabled = true;
+                document.getElementById("southButton").disabled = false;
+                document.getElementById("eastButton").disabled = true;
+                document.getElementById("westButton").disabled = false;
+                document.getElementById("upButton").disabled = true;
+                document.getElementById("downButton").disabled = true;
+            }
+            else if (currentLocale == 3) {
+                document.getElementById("northButton").disabled = true;
+                document.getElementById("southButton").disabled = false;
+                document.getElementById("eastButton").disabled = false;
+                document.getElementById("westButton").disabled = false;
+                document.getElementById("upButton").disabled = true;
+                document.getElementById("downButton").disabled = true;
+            }
+            else if (currentLocale == 4) {
+                document.getElementById("northButton").disabled = true;
+                document.getElementById("southButton").disabled = true;
+                document.getElementById("eastButton").disabled = false;
+                document.getElementById("westButton").disabled = true;
+                document.getElementById("upButton").disabled = true;
+                document.getElementById("downButton").disabled = true;
+            }
+            else if (currentLocale == 5) {
+                document.getElementById("northButton").disabled = true;
+                document.getElementById("southButton").disabled = true;
+                document.getElementById("eastButton").disabled = true;
+                document.getElementById("westButton").disabled = false;
+                document.getElementById("upButton").disabled = true;
+                document.getElementById("downButton").disabled = true;
+            }
+            else if (currentLocale == 6) {
+                document.getElementById("northButton").disabled = false;
+                document.getElementById("southButton").disabled = true;
+                document.getElementById("eastButton").disabled = true;
+                document.getElementById("westButton").disabled = true;
+                document.getElementById("upButton").disabled = true;
+                document.getElementById("downButton").disabled = true;
+            }
+            else if (currentLocale == 7) {
+                document.getElementById("northButton").disabled = true;
+                document.getElementById("southButton").disabled = true;
+                document.getElementById("eastButton").disabled = true;
+                document.getElementById("westButton").disabled = true;
+                document.getElementById("upButton").disabled = false;
+                document.getElementById("downButton").disabled = true;
+            }
+            
         } else {
             var taPtr = document.getElementById("taDisplay");
             var history = taPtr.value;
-            taPtr.value = "You cannot go that way." + "\n" + history;
+            taPtr.value = locale[currentLocale] + "\n" + "You cannot go that way." + "\n" + history;
         }
     }
 }
