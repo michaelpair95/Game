@@ -17,7 +17,7 @@ function init() {
               "Junk Yard",
               "Smog Check Garage",
               "Driveway",
-              "Under the Car"];  
+              "Under the Car"];
     
     // Set up the navigation matrix.
     nav = [
