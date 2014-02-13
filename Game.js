@@ -2,6 +2,8 @@
 var currentLocale = 0;
 var nav;
 var locale;
+var userPoints= new userPoints(0);
+
 
 
 
@@ -40,8 +42,15 @@ function init() {
 //    command = document.getElementById('enterButton').value;
 //}
 
+function userPoints(points) {
+    this.points = points
+    return points;
+}
+
+
 function go(command) {
     var dir = -1; // This will get set to a value > 0 if a direction command was entered.
+    document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
     
     //if (document.getElementById("enterButton").onclick == true) {  
       //  var command = document.getElementById("userInput").value;
@@ -64,11 +73,14 @@ function go(command) {
     
     if (dir > -1) { // This means a dir was set.
         var newLocation = nav[currentLocale][dir];
+        
         if (newLocation != -1) {
             currentLocale = newLocation;
             var taPtr = document.getElementById("taDisplay");
             var history = taPtr.value;
             taPtr.value = locale[currentLocale] + "\n" + history;
+            userPoints.points = userPoints.points + 5;
+            
             if (currentLocale == 0) {
                 document.getElementById("northButton").disabled = false;
                 document.getElementById("southButton").disabled = false;
