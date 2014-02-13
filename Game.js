@@ -4,6 +4,16 @@ var nav;
 var locale;
 var userPoints= new userPoints(0);
 
+// Set up the location list.
+var locale = new Array();
+    locale[0] = "Main Garage";
+    locale[1] = "Waiting Room";
+    locale[2] = "Storage Room";
+    locale[3] = "Main Office";
+    locale[4] = "Junk Yard";
+    locale[5] = "Smog Check Garage";
+    locale[6] = "Driveway";
+    locale[7] = "Under the Car";
 
 
 
@@ -12,15 +22,6 @@ function init() {
     document.getElementById("taDisplay").value = "Main Garage";
     document.getElementById("upButton").disabled = true;
     document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
-    
-    locale = ["Main Garage",
-              "Waiting Room",
-              "Storage Room",
-              "Main Office",
-              "Junk Yard",
-              "Smog Check Garage",
-              "Driveway",
-              "Under the Car"];
     
     // Set up the navigation matrix.
     nav = [
@@ -98,6 +99,7 @@ function go(command) {
             taPtr.value = locale[currentLocale] + "\n" + history;
             userPoints.points = userPoints.points + 5;
             document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
+            //alert(currentLocale)
             
             if (currentLocale == 0) {
                 document.getElementById("northButton").disabled = false;
