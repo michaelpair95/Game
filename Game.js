@@ -39,6 +39,16 @@ function init() {
 
 }
 
+function showControls() {
+    var taPtr = document.getElementById("taDisplay");
+    var history = taPtr.value;
+    taPtr.value = "To go north, type \"north\" or \"n\" \n" +
+                  "To go south, type \"south\" or \"s\" \n" +
+                  "To go east, type \"east\" or \"e\" \n" +
+                  "To go west, type \"west\" or \"w\" \n" +
+                  "To go up, type \"up\" or \"u\" \n" +
+                  "To go down, type \"down\" or \"d\" \n" + history;
+}
 
 function userPoints(points) {
     this.points = points
@@ -61,8 +71,11 @@ function go(command) {
         dir = 4;
     } else if (command.toLowerCase() == "down" || command.toLowerCase() == "d") {
         dir = 5;
-    } 
-    
+    } else {
+        var taPtr = document.getElementById("taDisplay");
+        var history = taPtr.value;
+        taPtr.value = "Please click help for a list of available commands \n" + history;
+    }
     
     if (dir > -1) { // This means a dir was set.
         var newLocation = nav[currentLocale][dir];
