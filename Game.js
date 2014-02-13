@@ -71,6 +71,8 @@ function go(command) {
         dir = 4;
     } else if (command.toLowerCase() == "down" || command.toLowerCase() == "d") {
         dir = 5;
+    } else if (command.toLowerCase() == "i") {
+        //inventory stuff will go here
     } else if (command.toLowerCase() =="help" || command.toLowerCase() == "h") {
         var taPtr = document.getElementById("taDisplay");
         var history = taPtr.value;
@@ -83,7 +85,7 @@ function go(command) {
     } else {
         var taPtr = document.getElementById("taDisplay");
         var history = taPtr.value;
-        taPtr.value = "Please click help for a list of available commands \n" + history;
+        taPtr.value = "Please click help or type \"help\" or \"h\" for a list of available commands \n" + history;
     }
     
     if (dir > -1) { // This means a dir was set.
