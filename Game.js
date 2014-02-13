@@ -71,6 +71,15 @@ function go(command) {
         dir = 4;
     } else if (command.toLowerCase() == "down" || command.toLowerCase() == "d") {
         dir = 5;
+    } else if (command.toLowerCase() =="help" || command.toLowerCase() == "h") {
+        var taPtr = document.getElementById("taDisplay");
+        var history = taPtr.value;
+        taPtr.value = "To go north, type \"north\" or \"n\" \n" +
+                      "To go south, type \"south\" or \"s\" \n" +
+                      "To go east, type \"east\" or \"e\" \n" +
+                      "To go west, type \"west\" or \"w\" \n" +
+                      "To go up, type \"up\" or \"u\" \n" +
+                      "To go down, type \"down\" or \"d\" \n" + history;
     } else {
         var taPtr = document.getElementById("taDisplay");
         var history = taPtr.value;
