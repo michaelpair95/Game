@@ -3,6 +3,11 @@ var currentLocale = 0;
 var nav;
 var locale;
 var userPoints= new userPoints(0);
+var timesRoomEntered= new timesRoomEntered(0, 0, 0, 0, 0, 0, 0, 0);
+
+
+//saved for quick testing
+//alert("function was called")
 
 // Set up the location list.
 var locale = new Array();
@@ -14,8 +19,6 @@ var locale = new Array();
     locale[5] = "Smog Check Garage";
     locale[6] = "Driveway";
     locale[7] = "Under the Car";
-
-
 
 function init() {
 
@@ -52,14 +55,55 @@ function showControls() {
 }
 
 function userPoints(points) {
-    this.points = points
+    this.points = points;
     return points;
 }
 
 
+function pointAdder() {
+    //alert("function was called")
+    if (currentLocale == 0 && timesRoomEntered.room0 < 1) {
+        userPoints.points = userPoints.points + 5;
+        timesRoomEntered.room0 = timesRoomEntered.room0 + 1;
+    } else if (currentLocale == 1 && timesRoomEntered.room1 < 1) {
+        userPoints.points = userPoints.points + 5;
+        timesRoomEntered.room1 = timesRoomEntered.room1 + 1;
+    } else if (currentLocale == 2 && timesRoomEntered.room2 < 1) {
+        userPoints.points = userPoints.points + 5;
+        timesRoomEntered.room2 = timesRoomEntered.room2 + 1;
+    } else if (currentLocale == 3 && timesRoomEntered.room3 < 1) {
+        userPoints.points = userPoints.points + 5;
+        timesRoomEntered.room3 = timesRoomEntered.room3 + 1;
+    } else if (currentLocale == 4 && timesRoomEntered.room4 < 1) {
+        userPoints.points = userPoints.points + 5;
+        timesRoomEntered.room4 = timesRoomEntered.room4 + 1;
+    } else if (currentLocale == 5 && timesRoomEntered.room5 < 1) {
+        userPoints.points = userPoints.points + 5;
+        timesRoomEntered.room5 = timesRoomEntered.room5 + 1;
+    } else if (currentLocale == 6 && timesRoomEntered.room6 < 1) {
+        userPoints.points = userPoints.points + 5;
+        timesRoomEntered.room6 = timesRoomEntered.room6 + 1;
+    } else if (currentLocale == 7 && timesRoomEntered.room7 < 1) {
+        userPoints.points = userPoints.points + 5;
+        timesRoomEntered.room7 = timesRoomEntered.room7 + 1;
+    } else {
+        //userPoints.points = userPoints.points + 5;
+    }
+}
+
+function timesRoomEntered(room0, room1, room2, room3, room4, room5, room6, room7) {
+    this.room0 = room0;
+    this.room1 = room1;
+    this.room2 = room2;
+    this.room3 = room3;
+    this.room4 = room4;
+    this.room5 = room5;
+    this.room6 = room6;
+    this.room7 = room7;
+}
+
 function go(command) {
     var dir = -1; // This will get set to a value > 0 if a direction command was entered.
-    
     if (command.toLowerCase() == "north" || command.toLowerCase() == "n") {
         dir = 0;
     } else if (command.toLowerCase() == "south" || command.toLowerCase() == "s") {
@@ -97,9 +141,8 @@ function go(command) {
             var taPtr = document.getElementById("taDisplay");
             var history = taPtr.value;
             taPtr.value = locale[currentLocale] + "\n" + history;
-            userPoints.points = userPoints.points + 5;
+            pointAdder();
             document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
-            //alert(currentLocale)
             
             if (currentLocale == 0) {
                 document.getElementById("northButton").disabled = false;
@@ -165,7 +208,6 @@ function go(command) {
                 document.getElementById("upButton").disabled = false;
                 document.getElementById("downButton").disabled = true;
             }
-            
         } else {
             var taPtr = document.getElementById("taDisplay");
             var history = taPtr.value;
@@ -173,3 +215,4 @@ function go(command) {
         }
     }
 }
+
