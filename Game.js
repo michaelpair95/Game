@@ -11,6 +11,7 @@ function init() {
 
     document.getElementById("taDisplay").value = "Main Garage";
     document.getElementById("upButton").disabled = true;
+    document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
     
     locale = ["Main Garage",
               "Waiting Room",
@@ -38,9 +39,6 @@ function init() {
 
 }
 
-//function getCommand() {
-//    command = document.getElementById('enterButton').value;
-//}
 
 function userPoints(points) {
     this.points = points
@@ -50,11 +48,6 @@ function userPoints(points) {
 
 function go(command) {
     var dir = -1; // This will get set to a value > 0 if a direction command was entered.
-    document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
-    
-    //if (document.getElementById("enterButton").onclick == true) {  
-      //  var command = document.getElementById("userInput").value;
-    //}
     
     if (command.toLowerCase() == "north" || command.toLowerCase() == "n") {
         dir = 0;
@@ -80,6 +73,7 @@ function go(command) {
             var history = taPtr.value;
             taPtr.value = locale[currentLocale] + "\n" + history;
             userPoints.points = userPoints.points + 5;
+            document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
             
             if (currentLocale == 0) {
                 document.getElementById("northButton").disabled = false;
