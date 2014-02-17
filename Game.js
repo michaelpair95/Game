@@ -1,16 +1,16 @@
 // Global Variables
 var currentLocale = 0;
 var nav;
-var locale;
+var locales;
 var userPoints= new userPoints(0);
 var timesRoomEntered= new timesRoomEntered(0, 0, 0, 0, 0, 0, 0, 0);
-
+var locale0;
 
 //saved for quick testing
 //alert("function was called")
 
 // Set up the location list.
-var locale = new Array();
+/*var locale = new Array();
     locale[0] = "Main Garage";
     locale[1] = "Waiting Room";
     locale[2] = "Storage Room";
@@ -18,7 +18,67 @@ var locale = new Array();
     locale[4] = "Junk Yard";
     locale[5] = "Smog Check Garage";
     locale[6] = "Driveway";
-    locale[7] = "Under the Car";
+    locale[7] = "Under the Car";*/
+
+
+/*locs = new Array();
+
+            var loc0 = new Locale(0);
+            loc0.name = "test 0";
+            loc0.desc = "tret etst 0";            
+            locs[0] = loc0;
+            
+            locs[1] = new Locale(1);
+            locs[1].name = "test 1";             
+            locs[1].desc = "tret etst 1";            
+  
+            alert(loc0.toString());
+            alert(locs[1].toString());*/
+
+//location prototypes
+//DONT FORGET TO CHANGES ALL PERTIRNANT LOCALE TO LOCALESSSSSS - done
+//this will probably be trashed
+/*var locales = new Array();
+    var locale0 = new locale(0);
+        locales[0] = locale0;
+        locale0.name = "Main Garage";
+        locale0.desc = "locale0 desc";
+
+    var locale1 = new locale(1);
+        locales[1] = locale1;
+        locale1.name = "Waiting Room";
+        locale1.desc = "locale1 desc";
+
+    var locale2 = new locale(2);
+        locales[2] = locale2;
+        locale2.name = "Storage Room";
+        locale2.desc = "locale2 desc";
+
+    var locale3 = new locale(3);
+        localess[3] = locale3;
+        locale3.name = "Main Office";
+        locale3.desc = "locale3 desc";
+
+    var locale4 = new locale(4);
+        locales[4] = locale4;
+        locale4.name = "Junk Yard";
+        locale4.desc = "locale4 desc";
+
+    var locale5 = new locale(5);
+        locales[5] = locale5;
+        locale5.name = "Smog Check Garage";
+        locale5.desc = "locale5 desc";
+
+    var locale6 = new locale(6);
+        locales[6] = locale6;
+        locale6.name = "Driveway";
+        locale6.desc = "locale6 desc";
+
+    var locale7 = new locale(7);
+        locales[7] = locale7;
+        locale7.name = "Under the Car";
+        locale7.desc = "locale7 desc";*/
+
 
 function init() {
 
@@ -104,6 +164,9 @@ function timesRoomEntered(room0, room1, room2, room3, room4, room5, room6, room7
 
 function go(command) {
     var dir = -1; // This will get set to a value > 0 if a direction command was entered.
+    
+    //clears the input text
+    document.getElementById('userInput').value="";
     if (command.toLowerCase() == "north" || command.toLowerCase() == "n") {
         dir = 0;
     } else if (command.toLowerCase() == "south" || command.toLowerCase() == "s") {
@@ -140,7 +203,7 @@ function go(command) {
             currentLocale = newLocation;
             var taPtr = document.getElementById("taDisplay");
             var history = taPtr.value;
-            taPtr.value = locale[currentLocale] + "\n" + history;
+            taPtr.value = locales(locale[currentLocale]).name + "\n" + history;
             pointAdder();
             document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
             
@@ -211,8 +274,15 @@ function go(command) {
         } else {
             var taPtr = document.getElementById("taDisplay");
             var history = taPtr.value;
-            taPtr.value = locale[currentLocale] + "\n" + "You cannot go that way." + "\n" + history;
+            taPtr.value = locales[currentLocale] + "\n" + "You cannot go that way." + "\n" + history;
         }
     }
 }
 
+
+        
+        
+        
+        
+        
+        

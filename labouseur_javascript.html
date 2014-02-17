@@ -8,6 +8,21 @@
          var currentLocale = "theLab";
 
          function updateDisplay() {
+
+            locs = new Array();
+
+            var loc0 = new Locale(0);
+            loc0.name = "test 0";
+            loc0.desc = "tret etst 0";            
+            locs[0] = loc0;
+            
+            locs[1] = new Locale(1);
+            locs[1].name = "test 1";             
+            locs[1].desc = "tret etst 1";            
+  
+            alert(loc0.toString());
+            alert(locs[1].toString());
+         
             var msg = "";
             switch (currentLocale) {
                case "theLab":  msg = "The Lab";
@@ -56,6 +71,20 @@
                updateDisplay();
             }
          }
+         
+         function Locale(id) {
+            this.id = id;
+            
+            this.name = "";
+            this.desc = "";
+            
+            this.toString = function() {
+               return "[Locale id=" + this.id + " name=" + this.name + " desc=" + this.desc + "]";
+            }
+         }
+         
+         
+         
       </script>
    </head>
    <body onload="updateDisplay();">
