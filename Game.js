@@ -1,84 +1,45 @@
 // Global Variables
 var currentLocale = 0;
 var nav;
-var locales;
+var locale;
 var userPoints= new userPoints(0);
 var timesRoomEntered= new timesRoomEntered(0, 0, 0, 0, 0, 0, 0, 0);
-var locale0;
 
 //saved for quick testing
 //alert("function was called")
 
-// Set up the location list.
-/*var locale = new Array();
-    locale[0] = "Main Garage";
-    locale[1] = "Waiting Room";
-    locale[2] = "Storage Room";
-    locale[3] = "Main Office";
-    locale[4] = "Junk Yard";
-    locale[5] = "Smog Check Garage";
-    locale[6] = "Driveway";
-    locale[7] = "Under the Car";*/
+//Locations prototype 1
+var locale = new Array();
+    locale[0] = new loc(0);
+        locale[0].name = "Main Garage";
+        locale[0].desc = "locale0 desc";
+    locale[1] = new loc(1);
+        locale[1].name = "Waiting Room";
+        locale[1].desc = "locale1 desc";
+    locale[2] = new loc(2);
+        locale[2].name = "Storage Room";
+        locale[2].desc = "locale2 desc";
+    locale[3] = new loc(3);
+        locale[3].name = "Main Office";
+        locale[3].desc = "locale3 desc";
+    locale[4] = new loc(4);
+        locale[4].name = "Junk Yard";
+        locale[4].desc = "locale4 desc";
+    locale[5] = new loc(5);
+        locale[5].name = "Smog Check Garage";
+        locale[5].desc = "locale5 desc";
+    locale[6] = new loc(6);
+        locale[6].name = "Driveway";
+        locale[6].desc = "locale6 desc";
+    locale[7] = new loc(7);
+        locale[7].name = "Under the Car";
+        locale[7].desc = "locale7 desc";
 
-
-/*locs = new Array();
-
-            var loc0 = new Locale(0);
-            loc0.name = "test 0";
-            loc0.desc = "tret etst 0";            
-            locs[0] = loc0;
-            
-            locs[1] = new Locale(1);
-            locs[1].name = "test 1";             
-            locs[1].desc = "tret etst 1";            
-  
-            alert(loc0.toString());
-            alert(locs[1].toString());*/
-
-//location prototypes
-//DONT FORGET TO CHANGES ALL PERTIRNANT LOCALE TO LOCALESSSSSS - done
-//this will probably be trashed
-/*var locales = new Array();
-    var locale0 = new locale(0);
-        locales[0] = locale0;
-        locale0.name = "Main Garage";
-        locale0.desc = "locale0 desc";
-
-    var locale1 = new locale(1);
-        locales[1] = locale1;
-        locale1.name = "Waiting Room";
-        locale1.desc = "locale1 desc";
-
-    var locale2 = new locale(2);
-        locales[2] = locale2;
-        locale2.name = "Storage Room";
-        locale2.desc = "locale2 desc";
-
-    var locale3 = new locale(3);
-        localess[3] = locale3;
-        locale3.name = "Main Office";
-        locale3.desc = "locale3 desc";
-
-    var locale4 = new locale(4);
-        locales[4] = locale4;
-        locale4.name = "Junk Yard";
-        locale4.desc = "locale4 desc";
-
-    var locale5 = new locale(5);
-        locales[5] = locale5;
-        locale5.name = "Smog Check Garage";
-        locale5.desc = "locale5 desc";
-
-    var locale6 = new locale(6);
-        locales[6] = locale6;
-        locale6.name = "Driveway";
-        locale6.desc = "locale6 desc";
-
-    var locale7 = new locale(7);
-        locales[7] = locale7;
-        locale7.name = "Under the Car";
-        locale7.desc = "locale7 desc";*/
-
+function loc(id) {
+    this.id = id;        
+    this.name = "";
+    this.desc = "";
+}
 
 function init() {
 
@@ -98,9 +59,6 @@ function init() {
     [-1, -1, -1,  0, -1, -1],
     [ 0, -1, -1, -1, -1, -1],
     [-1, -1, -1, -1,  0, -1]];
-    
-    
-
 }
 
 function showControls() {
@@ -203,7 +161,7 @@ function go(command) {
             currentLocale = newLocation;
             var taPtr = document.getElementById("taDisplay");
             var history = taPtr.value;
-            taPtr.value = locales(locale[currentLocale]).name + "\n" + history;
+            taPtr.value = locale[currentLocale].name + "\n" + history;
             pointAdder();
             document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
             
@@ -274,7 +232,7 @@ function go(command) {
         } else {
             var taPtr = document.getElementById("taDisplay");
             var history = taPtr.value;
-            taPtr.value = locales[currentLocale] + "\n" + "You cannot go that way." + "\n" + history;
+            taPtr.value = locale[currentLocale].name + "\n" + "You cannot go that way." + "\n" + history;
         }
     }
 }
