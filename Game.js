@@ -49,12 +49,17 @@ var locale = new Array();
         locale[7].toString();
         mite(1);
 
-/*function showRooms() {
-    //document.getElementById('roomList').style.display = 'block';
-    locale.name.toString();
-    var x=document.getElementById("roomList");
-        x.innerHTML=locale;
-} */
+function showRooms() {
+    document.getElementById("roomList").innerHTML=
+        locale[0].name + "\n" +
+        locale[1].name + "\n" +
+        locale[2].name + "\n" +
+        locale[3].name + "\n" +
+        locale[4].name + "\n" +
+        locale[5].name + "\n" +
+        locale[5].name + "\n" +
+        locale[6].name;
+} 
 
 function loc(id) {
     this.id = id;        
@@ -62,7 +67,7 @@ function loc(id) {
     this.name = "";
     this.desc = "";
     this.toString = function() {
-        return "[Locale id=" + this.id + "] \n" + "You are in the " + this.name + "\n" + this.desc;
+        return "You are in the " + this.name + "\n" + this.desc + "\n";
     }
 }
 //Item protoype
