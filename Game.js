@@ -4,6 +4,7 @@ var nav;
 var locale;
 var userPoints= new userPoints(0);
 var timesRoomEntered= new timesRoomEntered(0, 0, 0, 0, 0, 0, 0, 0);
+var item
 
 //saved for quick testing
 //alert("function was called")
@@ -13,6 +14,7 @@ var locale = new Array();
     locale[0] = new loc(0);
         locale[0].name = "Main Garage";
         locale[0].desc = "locale0 desc";
+        mite(0);
     locale[1] = new loc(1);
         locale[1].name = "Waiting Room";
         locale[1].desc = "locale1 desc";
@@ -22,9 +24,11 @@ var locale = new Array();
     locale[3] = new loc(3);
         locale[3].name = "Main Office";
         locale[3].desc = "locale3 desc";
+        mite(2);
     locale[4] = new loc(4);
         locale[4].name = "Junk Yard";
         locale[4].desc = "locale4 desc";
+        mite(3);
     locale[5] = new loc(5);
         locale[5].name = "Smog Check Garage";
         locale[5].desc = "locale5 desc";
@@ -34,11 +38,27 @@ var locale = new Array();
     locale[7] = new loc(7);
         locale[7].name = "Under the Car";
         locale[7].desc = "locale7 desc";
+        mite(1);
 
 function loc(id) {
     this.id = id;        
     this.name = "";
     this.desc = "";
+}
+//Item protoype
+var item = new Array();
+    item[0] = new mite(0); /* mite is item backwards :) */
+        item[0].name = "Wrench";
+    item[1] = new mite(1);
+        item[1].name = "Muffler";
+    item[2] = new mite(2);
+        item[2].name = "pen"
+    item[3] = new mite(3);
+        item[3].name = "gun"
+
+function mite(id) {
+    this.id = id;        
+    this.name = "";
 }
 
 function init() {
@@ -46,6 +66,7 @@ function init() {
     document.getElementById("taDisplay").value = "Main Garage";
     document.getElementById("upButton").disabled = true;
     document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
+    document.getElementById("roomList").style.display = 'none';
     
     // Set up the navigation matrix.
     nav = [
@@ -165,6 +186,7 @@ function go(command) {
             pointAdder();
             document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
             
+            
             if (currentLocale == 0) {
                 document.getElementById("northButton").disabled = false;
                 document.getElementById("southButton").disabled = false;
@@ -237,8 +259,9 @@ function go(command) {
     }
 }
 
-
-        
+function showRooms() {
+    document.getElementById('roomList').style.display = 'block';
+}
         
         
         
