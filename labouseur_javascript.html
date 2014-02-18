@@ -7,7 +7,18 @@
          // Global Variables
          var currentLocale = "theLab";
 
-         function updateDisplay() {
+         function Locale(id) {
+            this.id = id;
+            
+            this.name = "";
+            this.desc = "";
+            
+            this.toString = function() {
+               return "[Locale id=" + this.id + " name=" + this.name + " desc=" + this.desc + "]";
+            }
+         }
+          
+          function updateDisplay() {
 
             locs = new Array();
 
@@ -72,16 +83,7 @@
             }
          }
          
-         function Locale(id) {
-            this.id = id;
-            
-            this.name = "";
-            this.desc = "";
-            
-            this.toString = function() {
-               return "[Locale id=" + this.id + " name=" + this.name + " desc=" + this.desc + "]";
-            }
-         }
+         
          
          
          

@@ -14,36 +14,55 @@ var locale = new Array();
     locale[0] = new loc(0);
         locale[0].name = "Main Garage";
         locale[0].desc = "locale0 desc";
+        locale[0].toString();
         mite(0);
-    locale[1] = new loc(1);
+        locale[1] = new loc(1);
         locale[1].name = "Waiting Room";
         locale[1].desc = "locale1 desc";
+        locale[1].toString();
     locale[2] = new loc(2);
         locale[2].name = "Storage Room";
         locale[2].desc = "locale2 desc";
+        locale[2].toString();
     locale[3] = new loc(3);
         locale[3].name = "Main Office";
         locale[3].desc = "locale3 desc";
+        locale[3].toString();
         mite(2);
     locale[4] = new loc(4);
         locale[4].name = "Junk Yard";
         locale[4].desc = "locale4 desc";
+        locale[4].toString();
         mite(3);
     locale[5] = new loc(5);
         locale[5].name = "Smog Check Garage";
         locale[5].desc = "locale5 desc";
+        locale[5].toString();
     locale[6] = new loc(6);
         locale[6].name = "Driveway";
         locale[6].desc = "locale6 desc";
+        locale[6].toString();
     locale[7] = new loc(7);
         locale[7].name = "Under the Car";
         locale[7].desc = "locale7 desc";
+        locale[7].toString();
         mite(1);
+
+/*function showRooms() {
+    //document.getElementById('roomList').style.display = 'block';
+    locale.name.toString();
+    var x=document.getElementById("roomList");
+        x.innerHTML=locale;
+} */
 
 function loc(id) {
     this.id = id;        
+    
     this.name = "";
     this.desc = "";
+    this.toString = function() {
+        return "[Locale id=" + this.id + " name=" + this.name + " desc=" + this.desc + "]";
+    }
 }
 //Item protoype
 var item = new Array();
@@ -52,9 +71,9 @@ var item = new Array();
     item[1] = new mite(1);
         item[1].name = "Muffler";
     item[2] = new mite(2);
-        item[2].name = "pen"
+        item[2].name = "Pen"
     item[3] = new mite(3);
-        item[3].name = "gun"
+        item[3].name = "Gun"
 
 function mite(id) {
     this.id = id;        
@@ -66,7 +85,7 @@ function init() {
     document.getElementById("taDisplay").value = "Main Garage";
     document.getElementById("upButton").disabled = true;
     document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
-    document.getElementById("roomList").style.display = 'none';
+    //document.getElementById("roomList").style.display = 'none';
     
     // Set up the navigation matrix.
     nav = [
@@ -182,7 +201,8 @@ function go(command) {
             currentLocale = newLocation;
             var taPtr = document.getElementById("taDisplay");
             var history = taPtr.value;
-            taPtr.value = locale[currentLocale].name + "\n" + history;
+            taPtr.value = locale[currentLocale].toString() + "\n" + history;
+            //taPtr.value = loc(currentLocale).toString + "\n" + history;
             pointAdder();
             document.getElementById("pointCounter").innerHTML='Points: ' + userPoints.points;
             
@@ -259,11 +279,4 @@ function go(command) {
     }
 }
 
-function showRooms() {
-    document.getElementById('roomList').style.display = 'block';
-}
-        
-        
-        
-        
-        
+
