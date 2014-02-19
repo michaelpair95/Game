@@ -4,7 +4,8 @@ var nav;
 var locale;
 var userPoints= new userPoints(0);
 var timesRoomEntered= new timesRoomEntered(0, 0, 0, 0, 0, 0, 0, 0);
-var item
+var item;
+var inventory;
 
 //saved for quick testing
 //alert("function was called")
@@ -74,17 +75,39 @@ function loc(id) {
 var item = new Array();
     item[0] = new mite(0); /* mite is item backwards :) */
         item[0].name = "Wrench";
+        item[0].desc = "It's rusty";
+        //item[0].toString
     item[1] = new mite(1);
         item[1].name = "Muffler";
+        item[1].desc = "It's been modified to be louder";
+        //item[1].toString
     item[2] = new mite(2);
-        item[2].name = "Pen"
+        item[2].name = "Pen";
+        item[2].desc = "It's red";
+        //item[2].toString
     item[3] = new mite(3);
-        item[3].name = "Gun"
+        item[3].name = "Gun";
+        item[3].desc = "It's a Glock 37";
+        //item[3].toString
 
 function mite(id) {
     this.id = id;        
     this.name = "";
+    //this.toString = function() {}
 }
+
+function testings() {
+    alert(mite(0));   
+}
+
+function takeItem(command) {
+    //crap... I have no idea what to do... meh...
+    //great scott! I think I got it!
+    var inventory = locale[currentLocale]
+    if (command.toLowerCase() == "take" || command.toLowerCase() == "t"){
+        inventory.push(mite()
+    }   
+} 
 
 function init() {
 
@@ -126,6 +149,8 @@ function userPoints(points) {
 
 function pointAdder() {
     //alert("function was called")
+    //---Player does not recieve points for entering the Main Rooom e.g. the room they started in---
+    
     if (currentLocale == 0 && timesRoomEntered.room0 < 1) {
         //userPoints.points = userPoints.points + 5;
         timesRoomEntered.room0 = timesRoomEntered.room0 + 1;
@@ -283,5 +308,4 @@ function go(command) {
         }
     }
 }
-
 
